@@ -1,15 +1,7 @@
 package application;
 	
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.swing.SwingUtilities;
-
-import javafx.animation.PauseTransition;
-import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;

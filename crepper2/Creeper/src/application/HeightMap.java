@@ -10,7 +10,6 @@ public class HeightMap {
     
     private Point [] [] points;
     private static final float INITIAL_RANGE = 400;
-    private static final int DIVISOR = 2;
     
     private static final boolean SMOOTH_ON = true;
     private static final int NORMAL_SMOOTH = 1;
@@ -37,7 +36,6 @@ public class HeightMap {
         points[0][size].setHeight(Math.random()*seed);
         points[size][size].setHeight(Math.random()*seed);
         
-        int currentSize = size;
         int step = m.length - 1;
         while(step > 1){
             for(int x = 0; x < m.length - 1;x = x+step) {
@@ -111,7 +109,6 @@ public class HeightMap {
         for(int i = smoothLevel; i < points.length-smoothLevel; i++){
             for(int j = smoothLevel; j < (points.length-smoothLevel); j++){
                 double v = getNeighboursAVG(i, j, smoothLevel);
-                double hb = points[i][j].height;
                 points[i][j].height = (v);
             }
         }
@@ -119,11 +116,10 @@ public class HeightMap {
     
     private double getNeighboursAVG(int x, int y, int level){
         
-        Point[] n;
         switch(level){
             case NORMAL_SMOOTH: 
                 return (points[x-1][y].height + points[x][y-1].height + points[x+1][y].height + points[x][y+1].height)/4;
-            case VERY_SMOOTH: n = new Point[8];
+            case VERY_SMOOTH: 
                 return (points[x-1][y].height + points[x][y-1].height + points[x+1][y].height + points[x][y+1].height + 
                         points[x-1][y-1].height + points[x-1][y-1].height + points[x+1][y+1].height + points[x+1][y+1].height)/8;
         }
@@ -139,7 +135,6 @@ public class HeightMap {
         public Point(int x, int y) {
             this.x = x;
             this.y = y;
-            this.square = square;
         }
         
         public void calcHeight(Point ...  p){
